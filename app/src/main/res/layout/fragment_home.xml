@@ -22,9 +22,9 @@ ENTER DESCRIPTION HERE
         android:paddingEnd="@dimen/home_title_padding_start_end"
         android:paddingBottom="@dimen/home_title_padding_bottom"
         android:shadowColor="@color/black"
-        android:shadowDx="1"
-        android:shadowDy="1"
-        android:shadowRadius="2"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="10"
         android:text="@string/homeTitle"
         android:textColor="@color/white"
         android:textSize="48sp" />
