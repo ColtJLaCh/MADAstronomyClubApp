@@ -5,28 +5,28 @@ package coltonlachance.com.madskeletonapplication;
  * @author Colton LaChance
  */
 public class RecyclerPojo {
-    private String param1;
-    private String param2;
+    private String picName;
+    private int picID;
 
-    public RecyclerPojo(String param1, String param2) {
-        this.param1 = param1;
-        this.param2 = param2;
+    public RecyclerPojo(String picName, int picID) {
+        this.picName = picName;
+        this.picID = picID;
     }
 
-    public String getParam1() {
-        return param1;
+    public String getPicName() {
+        return picName;
     }
 
-    public void setParam1(String param1) {
-        this.param1 = param1;
+    public void setPicName(String picName) {
+        this.picName = picName;
     }
 
-    public String getParam2() {
-        return param2;
+    public int getPicID() {
+        return picID;
     }
 
-    public void setParam2(String param2) {
-        this.param2 = param2;
+    public void setPicID(int picID) {
+        this.picID = picID;
     }
 
 }

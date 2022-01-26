@@ -73,8 +73,11 @@ public class RecyclerFragment extends Fragment {
             ArrayList<RecyclerPojo> recyclerPojos = new ArrayList<RecyclerPojo>();
 
             //Create recycler cells/rows
-            recyclerPojos.add(new RecyclerPojo("1 - PARAM1", "1 - PARAM2"));
-            recyclerPojos.add(new RecyclerPojo("2 - PARAM1", "2 - PARAM2"));
+            recyclerPojos.add(new RecyclerPojo("Full Moon", R.drawable.fullmoon));
+            recyclerPojos.add(new RecyclerPojo("Midday Meteor", R.drawable.darlingmeteor));
+            recyclerPojos.add(new RecyclerPojo("Comet Debris", R.drawable.shootingstar));
+            recyclerPojos.add(new RecyclerPojo("Milky Way", R.drawable.stars));
+            recyclerPojos.add(new RecyclerPojo("Moon - Day", R.drawable.moonsky));
 
             //Get the view
             RecyclerView recyclerView = view.findViewById(R.id.recycler);

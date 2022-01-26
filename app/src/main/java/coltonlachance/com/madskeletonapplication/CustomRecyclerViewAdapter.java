@@ -3,6 +3,7 @@ package coltonlachance.com.madskeletonapplication;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -48,8 +49,8 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter {
 
         //Reinitialize CustomViewHolder, casting default holder as inherited class
         final CustomViewHolder holder1 = (CustomViewHolder) holder;
-        holder1.param1.setText((recyclerPojo.getParam1()));
-        holder1.param2.setText((recyclerPojo.getParam2()));
+        holder1.picTV.setText((recyclerPojo.getPicName()));
+        holder1.picIV.setImageResource((recyclerPojo.getPicID()));
 
     }
 
@@ -62,13 +63,13 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter {
 
     //Get resource data and store it in sub class
     class CustomViewHolder extends RecyclerView.ViewHolder {
-        protected TextView param1;
-        protected TextView param2;
+        protected TextView picTV;
+        protected ImageView picIV;
 
         public CustomViewHolder(View view) {
             super(view);
-            this.param1 = view.findViewById(R.id.pictureTV);
-            this.param2 = view.findViewById(R.id.param2TV);
+            this.picTV = view.findViewById(R.id.pictureTV);
+            this.picIV = view.findViewById(R.id.pictureIV);
         }
     }
 }
