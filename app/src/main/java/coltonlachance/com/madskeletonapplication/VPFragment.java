@@ -22,16 +22,26 @@ import java.util.ArrayList;
  */
 public class VPFragment extends Fragment {
 
+    final static int MERCURY = 0;
+    final static int VENUS = 1;
+    final static int MARS = 2;
+    final static int JUPITER = 3;
+    final static int SATURN = 4;
+    final static int URANUS = 5;
+    final static int NEPTUNE = 6;
+
     public ListView list;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_PLANET_NUM = "0";
+    private static final String ARG_PLANET_NAME = "planet_name";
+    private static final String ARG_PLANET_PICTURE = "planet_picture";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private int mPlanetNum;
+    private String mPlanetName;
+    private int mPlanetPicture;
 
     public VPFragment() {
         // Required empty public constructor
@@ -41,16 +51,18 @@ public class VPFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
+     * @param mPlanetNum Parameter 1
+     * @param mPlanetName  Parameter 2
+     * @param mPlanetPicture  Parameter 3
      * @return A new instance of fragment VPFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static VPFragment newInstance(String param1, String param2) {
+    public static VPFragment newInstance(int mPlanetNum, String mPlanetName, int mPlanetPicture) {
         VPFragment fragment = new VPFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putInt(ARG_PLANET_NUM, mPlanetNum);
+        args.putString(ARG_PLANET_NAME, mPlanetName);
+        args.putInt(ARG_PLANET_PICTURE, mPlanetPicture);
         fragment.setArguments(args);
         return fragment;
     }
@@ -59,8 +71,9 @@ public class VPFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            mPlanetNum = getArguments().getInt(ARG_PLANET_NUM);
+            mPlanetName = getArguments().getString(ARG_PLANET_NAME);
+            mPlanetPicture = getArguments().getInt(ARG_PLANET_PICTURE);
         }
     }
 
@@ -74,11 +87,19 @@ public class VPFragment extends Fragment {
 
         ArrayList<DataTypeItem> dataTypeList = new ArrayList<DataTypeItem>();
 
-        dataTypeList.add(new DataTypeItem("Image on homepage","Created using Paint.net."));
-        dataTypeList.add(new DataTypeItem("TIP #1 Image", "From https://pixabay.com/photos/dark-rain-windows-glass-windows-1850684/, edited."));
-        dataTypeList.add(new DataTypeItem("TIP #2 Image", "From https://pixabay.com/photos/baseball-field-sports-field-1495657/, edited."));
-        dataTypeList.add(new DataTypeItem("TIP #3 Image", "From https://pixabay.com/photos/construction-site-construction-worker-3279650/, edited."));
-        dataTypeList.add(new DataTypeItem("Concrete Buddy App", "Created solely by Colton LaChance."));
+        switch(mPlanetNum) {
+            case MERCURY:
+                dataTypeList.add(new DataTypeItem("Image on homepage", "Created using Paint.net."));
+                dataTypeList.add(new DataTypeItem("TIP #1 Image", "From https://pixabay.com/photos/dark-rain-windows-glass-windows-1850684/, edited."));
+                dataTypeList.add(new DataTypeItem("TIP #2 Image", "From https://pixabay.com/photos/baseball-field-sports-field-1495657/, edited."));
+                dataTypeList.add(new DataTypeItem("TIP #3 Image", "From https://pixabay.com/photos/construction-site-construction-worker-3279650/, edited."));
+                dataTypeList.add(new DataTypeItem("Concrete Buddy App", "Created solely by Colton LaChance."));
+            break;
+
+            case VENUS:
+
+            break;
+        }
 
         CustomListAdapter adapter = new CustomListAdapter(getContext(), dataTypeList);
 
@@ -86,6 +107,12 @@ public class VPFragment extends Fragment {
 
         //Insert param info into resources like TextViews here
         //EXAMPLE: if (mParam1 != null) titleTV.setText(mParam1);
+
+        TextView planetNameTV = view.findViewById(R.id.planetNameTV);
+        ImageView planetIV = view.findViewById(R.id.planetIV);
+
+        if (mPlanetName != null) planetNameTV.setText(mPlanetName);
+        if (mPlanetPicture != -1) planetIV.setImageResource(mPlanetPicture);
 
         return view;
     }
@@ -112,6 +139,9 @@ public class VPFragment extends Fragment {
 
             TextView name = (TextView) convertView.findViewById(R.id.listTitle);
             name.setText(item.getTitle());
+            TextView desc = (TextView) convertView.findViewById(R.id.listDesc);
+            desc.setText(item.getDesc());
+
             return convertView;
         }
     }
