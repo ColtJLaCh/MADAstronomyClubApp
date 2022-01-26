@@ -4,15 +4,14 @@
     <string name="app_name">MADSkeletonApplication</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">Navigation</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
     <string name="menu_home">Home</string>
-    <string name="menu_vp">ViewPager</string>
-    <string name="menu_recycler">RecyclerView</string>
-    <string name="menu_extra">Extra</string>
+    <string name="menu_vp">Planets Info</string>
+    <string name="menu_recycler">Club Pictures</string>
+    <string name="menu_extra">Contact</string>
 
     <!--HOME PAGE STRINGS-->
     <string name="homeTitle">Astronomy Club</string>
