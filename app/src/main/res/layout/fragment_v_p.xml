@@ -5,7 +5,7 @@ The default layout of each page of a ViewPager2,
 Data is populated into each of the TextViews/ImageViews/etc via the CustomViewPageAdapter.java
 -->
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -17,4 +17,4 @@ Data is populated into each of the TextViews/ImageViews/etc via the CustomViewPa
         android:layout_height="match_parent"
         android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+</LinearLayout>
