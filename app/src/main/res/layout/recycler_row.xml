@@ -23,7 +23,7 @@ The default layout of each cell in a Recycler List View,
             android:id="@+id/pictureTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-smallcaps"
+            android:fontFamily="sans-serif"
             android:text="@string/hello_blank_fragment"
             android:textAlignment="center"
             android:textColor="@color/white"

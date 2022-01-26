@@ -17,8 +17,7 @@
     <!--HOME PAGE STRINGS-->
     <string name="homeTitle">Astronomy Club</string>
 
-    <!--PLANETS STRINGS-->
-    <string name="mercuryTitle">Mercury</string>
-    <string name="mercuryDesc">TIME: </string>
+    <!--Contact STRINGS-->
+    <string name="emailMe">Feedback!\n\nPress the icon to send an email!</string>
 
 </resources>

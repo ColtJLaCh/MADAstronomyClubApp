@@ -4,16 +4,37 @@
 ENTER DESCRIPTION HERE
 -->
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical"
+    android:padding="34dp"
+    android:weightSum="100"
     tools:context=".ExtraFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/contactTV"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="0dp"
+        android:layout_weight="30"
+        android:gravity="bottom|center_horizontal"
+        android:text="@string/emailMe"
+        android:textColor="@color/white"
+        android:textSize="34sp" />
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/contactMail"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="50"
+        android:adjustViewBounds="false"
+        android:clickable="true"
+        android:cropToPadding="false"
+        android:padding="48dp"
+        android:src="@android:drawable/ic_dialog_email" />
+
+</LinearLayout>

@@ -1,5 +1,7 @@
 package coltonlachance.com.madskeletonapplication;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +9,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,6 +63,25 @@ public class ExtraFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_extra, container, false);
+        View view = inflater.inflate(R.layout.fragment_extra, container, false);
+
+        ImageView emailButton = view.findViewById(R.id.contactMail);
+
+        emailButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String[] emailaddresses = {"CL51@myscc.ca"};
+                String[] emailCCs = {"CL51@myscc.ca"};
+                Intent intent = new Intent(Intent.ACTION_SENDTO);
+                intent.setData(Uri.parse("mailto:"));
+                intent.putExtra(Intent.EXTRA_EMAIL,emailaddresses);
+                intent.putExtra(Intent.EXTRA_CC,emailCCs);
+                intent.putExtra(Intent.EXTRA_SUBJECT, "ASTRONOMY CLUB");
+                intent.putExtra(Intent.EXTRA_TEXT,"FEEDBACK OR INQUIRY ON APP: ");
+                startActivity(intent);
+            }
+        });
+
+        return view;
     }
 }
