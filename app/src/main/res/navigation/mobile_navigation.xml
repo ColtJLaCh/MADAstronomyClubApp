@@ -12,16 +12,16 @@
     <fragment
         android:id="@+id/nav_recycler"
         android:name="coltonlachance.com.madskeletonapplication.RecyclerFragment"
-        android:label="RecyclerView"
+        android:label="Club Pictures"
         tools:layout="@layout/fragment_recycler" />
     <fragment
         android:id="@+id/nav_extra"
         android:name="coltonlachance.com.madskeletonapplication.ExtraFragment"
-        android:label="Extra"
+        android:label="Contact"
         tools:layout="@layout/fragment_extra" />
     <fragment
         android:id="@+id/nav_vp_holder"
         android:name="coltonlachance.com.madskeletonapplication.VPHolderFragment"
-        android:label="ViewPager Holder"
+        android:label="Planets Info"
         tools:layout="@layout/fragment_v_p_holder" />
 </navigation>

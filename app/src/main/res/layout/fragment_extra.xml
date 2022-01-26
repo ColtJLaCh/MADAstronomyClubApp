@@ -35,6 +35,7 @@ ENTER DESCRIPTION HERE
         android:clickable="true"
         android:cropToPadding="false"
         android:padding="48dp"
-        android:src="@android:drawable/ic_dialog_email" />
+        android:src="@android:drawable/ic_dialog_email"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </LinearLayout>
