@@ -67,7 +67,7 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter {
 
         public CustomViewHolder(View view) {
             super(view);
-            this.param1 = view.findViewById(R.id.param1TV);
+            this.param1 = view.findViewById(R.id.pictureTV);
             this.param2 = view.findViewById(R.id.param2TV);
         }
     }
