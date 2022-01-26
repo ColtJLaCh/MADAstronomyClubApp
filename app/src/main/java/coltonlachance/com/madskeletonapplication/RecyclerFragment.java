@@ -19,6 +19,7 @@ import java.util.ArrayList;
 /**RecyclerFragment
  * This fragment is used to host and populate the Recycler List View by initializing a series of Pojos (DEFAULT: RecyclerPojo.java)
  * As well as adding any ItemDecorations or other modifications to the RecyclerView within the onCreateView method
+ *
  * @author Colton LaChance
  */
 public class RecyclerFragment extends Fragment {

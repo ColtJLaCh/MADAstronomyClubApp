@@ -2,6 +2,10 @@ package coltonlachance.com.madskeletonapplication;
 
 /**Listings
  * A pojo for a recycler view adapter
+ *
+ * Used for the Club Pictures recycler view,
+ * contains parameters for picture name and ID
+ *
  * @author Colton LaChance
  */
 public class RecyclerPojo {

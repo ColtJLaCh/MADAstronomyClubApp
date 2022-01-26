@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <!--
-ENTER DESCRIPTION HERE
+Contact fragment .xml, contains a TextView and Email icon ImageView
+Used to send emails providing app feedback through an email intent.
 -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -13,7 +14,7 @@ ENTER DESCRIPTION HERE
     android:orientation="vertical"
     android:padding="34dp"
     android:weightSum="100"
-    tools:context=".ExtraFragment">
+    tools:context=".ContactFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView

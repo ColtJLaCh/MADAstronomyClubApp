@@ -2,6 +2,7 @@ package coltonlachance.com.madskeletonapplication;
 
 /**DataTypeItem
  * An item for a custom list view
+ * Contains a title and description
  * @author Colton LaChance
  */
 public class DataTypeItem {

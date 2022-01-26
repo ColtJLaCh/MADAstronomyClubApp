@@ -68,6 +68,7 @@ public class VPHolderFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_v_p_holder, container, false);
 
+        //Set VP2 adapter
         ViewPager2 viewPager2 = view.findViewById(R.id.viewPagerHolder);
         viewPager2.setAdapter(new CustomViewPageAdapter(getActivity()));
 

@@ -9,15 +9,13 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ExtraFragment#newInstance} factory method to
- * create an instance of this fragment.
+/**HomeFragment
+ * A contact fragment, used to provide app feedback through an email intent
+ * @author Colton LaChance
  */
-public class ExtraFragment extends Fragment {
+public class ContactFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,7 +26,7 @@ public class ExtraFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public ExtraFragment() {
+    public ContactFragment() {
         // Required empty public constructor
     }
 
@@ -41,8 +39,8 @@ public class ExtraFragment extends Fragment {
      * @return A new instance of fragment ExtraFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ExtraFragment newInstance(String param1, String param2) {
-        ExtraFragment fragment = new ExtraFragment();
+    public static ContactFragment newInstance(String param1, String param2) {
+        ContactFragment fragment = new ContactFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -63,8 +61,9 @@ public class ExtraFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_extra, container, false);
+        View view = inflater.inflate(R.layout.fragment_contact, container, false);
 
+        //Grab imageview resource and use setOnClickListener to start an email intent
         ImageView emailButton = view.findViewById(R.id.contactMail);
 
         emailButton.setOnClickListener(new View.OnClickListener() {

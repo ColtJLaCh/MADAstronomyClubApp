@@ -15,6 +15,11 @@ public class CustomViewPageAdapter extends FragmentStateAdapter {
         super(fragmentActivity);
     }
 
+    /**CreateFragment
+     * A method that returns a "VPFragment" by default based on the current position of the viewpager
+     * @param position
+     * @return fragment
+     */
     public Fragment createFragment(int position) {
         switch(position) {
             case 0: return VPFragment.newInstance(position,"Mercury",R.drawable.mercury);

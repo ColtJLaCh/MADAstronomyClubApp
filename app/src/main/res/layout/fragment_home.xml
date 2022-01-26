@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <!--
-ENTER DESCRIPTION HERE
+A simple home .xml, background is a bitmap resource creating using the milkyway.jpg image asset
 -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

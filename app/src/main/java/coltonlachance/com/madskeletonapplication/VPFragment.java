@@ -18,6 +18,9 @@ import java.util.ArrayList;
 /**VPFragment
  * A fragment to be instantiated through a ViewPager2
  * Uses "CustomViewPageAdapter.java" by default to initialize with specified parameters
+ *
+ * Contains a title, image asset and custom ListView initialized in the onCreateViewMethod
+ *
  * @author Colton LaChance
  */
 public class VPFragment extends Fragment {
@@ -83,10 +86,13 @@ public class VPFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_v_p, container, false);
 
+        //Find the ListView resource
         list = view.findViewById(R.id.dataTypeList);
 
+        //Instantiate the ArrayList used to insert into the ListView
         ArrayList<DataTypeItem> dataTypeList = new ArrayList<DataTypeItem>();
 
+        //Populate the list based on the current ViewPager position, through the mPlanetNum parameter
         switch(mPlanetNum) {
             case MERCURY:
                 dataTypeList.add(new DataTypeItem("DISTANCE:", "77 million km"));
@@ -173,6 +179,7 @@ public class VPFragment extends Fragment {
             break;
         }
 
+        //Instantiate and set the adapter
         CustomListAdapter adapter = new CustomListAdapter(getContext(), dataTypeList);
 
         list.setAdapter(adapter);
@@ -180,6 +187,7 @@ public class VPFragment extends Fragment {
         //Insert param info into resources like TextViews here
         //EXAMPLE: if (mParam1 != null) titleTV.setText(mParam1);
 
+        //Find VP resources, and reinitialize them with parameter values
         TextView planetNameTV = view.findViewById(R.id.planetNameTV);
         ImageView planetIV = view.findViewById(R.id.planetIV);
 
@@ -189,6 +197,11 @@ public class VPFragment extends Fragment {
         return view;
     }
 
+    /**CustomListAdapter
+     * A custom adapter for ListView used to grab resource info from the list.xml,
+     * and initialize it with an ArrayList<DataTypeItem>
+     * @author Colton LaChance
+     */
     public class CustomListAdapter extends ArrayAdapter<DataTypeItem> {
         public CustomListAdapter(Context context, ArrayList<DataTypeItem> items) {
             super(context,0,items);
@@ -199,11 +212,6 @@ public class VPFragment extends Fragment {
 
             DataTypeItem item = getItem(position);
 
-            /*
-
-            ---------------COMMENT AND UNCOMMENT HERE!-----------------
-
-            */
             if (convertView == null) {
                 //convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_view,parent,false);
                 convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_view,parent,false);
