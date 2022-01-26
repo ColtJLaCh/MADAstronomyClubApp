@@ -89,15 +89,87 @@ public class VPFragment extends Fragment {
 
         switch(mPlanetNum) {
             case MERCURY:
-                dataTypeList.add(new DataTypeItem("Image on homepage", "Created using Paint.net."));
-                dataTypeList.add(new DataTypeItem("TIP #1 Image", "From https://pixabay.com/photos/dark-rain-windows-glass-windows-1850684/, edited."));
-                dataTypeList.add(new DataTypeItem("TIP #2 Image", "From https://pixabay.com/photos/baseball-field-sports-field-1495657/, edited."));
-                dataTypeList.add(new DataTypeItem("TIP #3 Image", "From https://pixabay.com/photos/construction-site-construction-worker-3279650/, edited."));
-                dataTypeList.add(new DataTypeItem("Concrete Buddy App", "Created solely by Colton LaChance."));
+                dataTypeList.add(new DataTypeItem("DISTANCE:", "77 million km"));
+
+                dataTypeList.add(new DataTypeItem("MORNING-RANGE", "Oct. 3 - Oct. 17"));
+                dataTypeList.add(new DataTypeItem("MORNING-TIME", "~1h < Sunrise"));
+                dataTypeList.add(new DataTypeItem("MORNING-DIR", "EAST"));
+
+                dataTypeList.add(new DataTypeItem("EVENING-RANGE", "April 18 - May 10"));
+                dataTypeList.add(new DataTypeItem("EVENING-TIME", "~1h > Sunset"));
+                dataTypeList.add(new DataTypeItem("EVENING-DIR", "WEST"));
             break;
 
             case VENUS:
+                dataTypeList.add(new DataTypeItem("DISTANCE:", "61 million km"));
 
+                dataTypeList.add(new DataTypeItem("MORNING-RANGE", "Jan. 17 - Aug. 27"));
+                dataTypeList.add(new DataTypeItem("MORNING-TIME", "~1:30h < Sunrise"));
+                dataTypeList.add(new DataTypeItem("MORNING-DIR", "EAST"));
+
+                dataTypeList.add(new DataTypeItem("EVENING-RANGE", "Dec. 20 - Dec. 31"));
+                dataTypeList.add(new DataTypeItem("EVENING-TIME", "~1h > Sunset"));
+                dataTypeList.add(new DataTypeItem("EVENING-DIR", "WEST"));
+            break;
+
+            case MARS:
+                dataTypeList.add(new DataTypeItem("DISTANCE:", "54.6 million km"));
+
+                dataTypeList.add(new DataTypeItem("MORNING-RANGE", "Jan. 1 - Dec. 7"));
+                dataTypeList.add(new DataTypeItem("MORNING-TIME", "~0:30m < Sunrise"));
+                dataTypeList.add(new DataTypeItem("MORNING-DIR", "EAST"));
+
+                dataTypeList.add(new DataTypeItem("EVENING-RANGE", "Dec. 8 - Dec. 31"));
+                dataTypeList.add(new DataTypeItem("EVENING-TIME", "~1h > Sunset"));
+                dataTypeList.add(new DataTypeItem("EVENING-DIR", "WEST"));
+            break;
+
+            case JUPITER:
+                dataTypeList.add(new DataTypeItem("DISTANCE:", "588 million km"));
+
+                dataTypeList.add(new DataTypeItem("MORNING-RANGE", "Mar. 26 - Sept. 25"));
+                dataTypeList.add(new DataTypeItem("MORNING-TIME", "~1:30m < Sunrise"));
+                dataTypeList.add(new DataTypeItem("MORNING-DIR", "EAST"));
+
+                dataTypeList.add(new DataTypeItem("EVENING-RANGE", "Sept. 26 - Dec. 31"));
+                dataTypeList.add(new DataTypeItem("EVENING-TIME", "~0:40m < Sunset"));
+                dataTypeList.add(new DataTypeItem("EVENING-DIR", "WEST"));
+            break;
+
+            case SATURN:
+                dataTypeList.add(new DataTypeItem("DISTANCE:", "1.2 billion km"));
+
+                dataTypeList.add(new DataTypeItem("MORNING-RANGE", "Feb. 22 - Aug. 13"));
+                dataTypeList.add(new DataTypeItem("MORNING-TIME", "~1h < Sunrise"));
+                dataTypeList.add(new DataTypeItem("MORNING-DIR", "EAST"));
+
+                dataTypeList.add(new DataTypeItem("EVENING-RANGE", "Aug. 14 - Dec. 31"));
+                dataTypeList.add(new DataTypeItem("EVENING-TIME", "~1h > Sunset"));
+                dataTypeList.add(new DataTypeItem("EVENING-DIR", "WEST"));
+            break;
+
+            case URANUS:
+                dataTypeList.add(new DataTypeItem("DISTANCE:", "2.6 billon km"));
+
+                dataTypeList.add(new DataTypeItem("MORNING-RANGE", "May. 22 - Nov. 8"));
+                dataTypeList.add(new DataTypeItem("MORNING-TIME", "~3h < Sunrise"));
+                dataTypeList.add(new DataTypeItem("MORNING-DIR", "EAST"));
+
+                dataTypeList.add(new DataTypeItem("EVENING-RANGE", "Jan. 1 - April. 18"));
+                dataTypeList.add(new DataTypeItem("EVENING-TIME", "~3h > Sunset"));
+                dataTypeList.add(new DataTypeItem("EVENING-DIR", "WEST"));
+            break;
+
+            case NEPTUNE:
+                dataTypeList.add(new DataTypeItem("DISTANCE:", "4.3 billon km"));
+
+                dataTypeList.add(new DataTypeItem("MORNING-RANGE", "March. 29 - Sept. 15"));
+                dataTypeList.add(new DataTypeItem("MORNING-TIME", "~3h < Sunrise"));
+                dataTypeList.add(new DataTypeItem("MORNING-DIR", "EAST"));
+
+                dataTypeList.add(new DataTypeItem("EVENING-RANGE", "Jan. 1 - Feb. 25"));
+                dataTypeList.add(new DataTypeItem("EVENING-TIME", "~3h > Sunset"));
+                dataTypeList.add(new DataTypeItem("EVENING-DIR", "WEST"));
             break;
         }
 
