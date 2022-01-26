@@ -12,4 +12,7 @@
     <dimen name="home_title_padding_bottom">96dp</dimen>
     <dimen name="home_title_padding_start_end">8dp</dimen>
 
+    <!--PLANETS-->
+    <dimen name="planets_font_size">24sp</dimen>
+
 </resources>
