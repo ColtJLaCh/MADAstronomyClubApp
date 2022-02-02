@@ -3,30 +3,37 @@
 <!--
 A simple home .xml, background is a bitmap resource creating using the milkyway.jpg image asset
 -->
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/home_background"
-    android:orientation="vertical"
-    tools:context=".HomeFragment">
+    android:background="@color/primary">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fontFamily="@font/gravitas_one"
-        android:gravity="center"
-        android:paddingStart="@dimen/home_title_padding_start_end"
-        android:paddingEnd="@dimen/home_title_padding_start_end"
-        android:paddingBottom="@dimen/home_title_padding_bottom"
-        android:shadowColor="@color/black"
-        android:shadowDx="2"
-        android:shadowDy="2"
-        android:shadowRadius="10"
-        android:text="@string/homeTitle"
-        android:textColor="@color/white"
-        android:textSize="48sp" />
+        android:background="@drawable/home_background"
+        android:orientation="vertical"
+        tools:context=".HomeFragment"
+        android:alpha="0.85">
 
-</LinearLayout>
+        <!-- TODO: Update blank fragment layout -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/gravitas_one"
+            android:gravity="center"
+            android:paddingStart="@dimen/home_title_padding_start_end"
+            android:paddingEnd="@dimen/home_title_padding_start_end"
+            android:paddingBottom="@dimen/home_title_padding_bottom"
+            android:shadowColor="@color/black"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="10"
+            android:text="@string/homeTitle"
+            android:textColor="@color/white"
+            android:textSize="48sp" />
+
+    </LinearLayout>
+</FrameLayout>
