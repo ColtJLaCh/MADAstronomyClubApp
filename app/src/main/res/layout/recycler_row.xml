@@ -11,6 +11,7 @@ Used for the RecyclerFragment named Club Pictures on the nav drawer
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
     app:cardBackgroundColor="#000000"
+    app:cardCornerRadius="32dp"
     app:contentPadding="4dp">
 
     <LinearLayout
@@ -34,8 +35,13 @@ Used for the RecyclerFragment named Club Pictures on the nav drawer
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
-            android:paddingBottom="120dp"
             app:srcCompat="@drawable/saturn" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/primary_on" />
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>
