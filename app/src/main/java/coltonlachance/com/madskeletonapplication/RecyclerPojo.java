@@ -12,9 +12,12 @@ public class RecyclerPojo {
     private String picName;
     private int picID;
 
-    public RecyclerPojo(String picName, int picID) {
+    private long dateTakenInMillis; //Will convert in future to method that calculates using Java Calendar class
+
+    public RecyclerPojo(String picName, int picID, long dateTakenInMillis) {
         this.picName = picName;
         this.picID = picID;
+        this.dateTakenInMillis = dateTakenInMillis;
     }
 
     public String getPicName() {
@@ -33,4 +36,12 @@ public class RecyclerPojo {
         this.picID = picID;
     }
 
+
+    public long getDateTakenInMillis() {
+        return dateTakenInMillis;
+    }
+
+    public void setDateTakenInMillis(long dateTakenInMillis) {
+        this.dateTakenInMillis = dateTakenInMillis;
+    }
 }

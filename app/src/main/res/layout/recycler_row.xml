@@ -13,7 +13,8 @@ Used for the RecyclerFragment named Club Pictures on the nav drawer
     android:layout_margin="10dp"
     app:cardBackgroundColor="#000000"
     app:cardCornerRadius="32dp"
-    app:contentPadding="4dp">
+    app:contentPadding="4dp"
+    android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -61,7 +62,9 @@ Used for the RecyclerFragment named Club Pictures on the nav drawer
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/iconbackground"
-            android:padding="8dp"
+            android:clickable="true"
+            android:contentDescription="@string/date_taken_button"
+            android:padding="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/view"
             app:layout_constraintTop_toBottomOf="@id/view"

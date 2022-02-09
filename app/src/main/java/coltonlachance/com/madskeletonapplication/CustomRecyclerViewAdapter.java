@@ -1,5 +1,9 @@
 package coltonlachance.com.madskeletonapplication;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.provider.CalendarContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,10 +27,12 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter {
 
     //Create the array list that holds the Pojos
     private ArrayList<RecyclerPojo> recyclerPojos;
+    private Context context;
 
     //Set pojos through public constructor
-    public CustomRecyclerViewAdapter(ArrayList<RecyclerPojo> recyclerPojos) {
+    public CustomRecyclerViewAdapter(ArrayList<RecyclerPojo> recyclerPojos, Context context) {
         this.recyclerPojos = recyclerPojos;
+        this.context = context;
     }
 
     //Set ViewHolder layout parameters, and return as view
@@ -52,6 +58,18 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter {
         holder1.picTV.setText((recyclerPojo.getPicName()));
         holder1.picIV.setImageResource((recyclerPojo.getPicID()));
 
+        holder1.calendarIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_INSERT)
+                .setData(CalendarContract.Events.CONTENT_URI)
+                .putExtra(CalendarContract.Events.TITLE, recyclerPojo.getPicName() + " - Club Pic was taken")
+                .putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true)
+                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,recyclerPojo.getDateTakenInMillis());
+
+                context.startActivity(i);
+            }
+        });
     }
 
     //Return ViewHolder size and println for debugging purposes
@@ -65,11 +83,13 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter {
     class CustomViewHolder extends RecyclerView.ViewHolder {
         protected TextView picTV;
         protected ImageView picIV;
+        protected ImageView calendarIcon;
 
         public CustomViewHolder(View view) {
             super(view);
             this.picTV = view.findViewById(R.id.pictureTV);
             this.picIV = view.findViewById(R.id.pictureIV);
+            this.calendarIcon = view.findViewById(R.id.calendarIcon);
         }
     }
 }

@@ -22,5 +22,6 @@
 
     <!--Contact STRINGS-->
     <string name="emailMe">Feedback!\n\nPress the icon to send an email!</string>
+    <string name="date_taken_button">date taken button</string>
 
 </resources>
