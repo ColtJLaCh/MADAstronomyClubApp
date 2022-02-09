@@ -58,6 +58,7 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter {
         holder1.picTV.setText((recyclerPojo.getPicName()));
         holder1.picIV.setImageResource((recyclerPojo.getPicID()));
 
+        //Begin calendar intent on clickable image view
         holder1.calendarIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,7 +66,8 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter {
                 .setData(CalendarContract.Events.CONTENT_URI)
                 .putExtra(CalendarContract.Events.TITLE, recyclerPojo.getPicName() + " - Club Pic was taken")
                 .putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true)
-                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,recyclerPojo.getDateTakenInMillis());
+                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,recyclerPojo.getDateTakenInMillis())
+                .putExtra(CalendarContract.EXTRA_EVENT_END_TIME,recyclerPojo.getDateTakenInMillis()+1); //Fix glitch where end time was before start time
 
                 context.startActivity(i);
             }

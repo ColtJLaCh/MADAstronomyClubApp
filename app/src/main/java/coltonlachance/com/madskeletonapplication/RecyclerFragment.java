@@ -76,7 +76,7 @@ public class RecyclerFragment extends Fragment {
             //Create ArrayList to be used within the instantiation of the CustomRecyclerViewAdapter
             ArrayList<RecyclerPojo> recyclerPojos = new ArrayList<RecyclerPojo>();
 
-        //Create recycler cells/rows
+            //Create recycler cells/rows
             recyclerPojos.add(new RecyclerPojo("Full Moon", R.drawable.fullmoon,1640062800000L));
             recyclerPojos.add(new RecyclerPojo("Midday Meteor", R.drawable.darlingmeteor,1631764800000L));
             recyclerPojos.add(new RecyclerPojo("Comet Debris", R.drawable.shootingstar,1625284800000L));
