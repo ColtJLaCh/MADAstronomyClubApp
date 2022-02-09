@@ -16,6 +16,10 @@
     <!--HOME PAGE STRINGS-->
     <string name="homeTitle">Astronomy Club</string>
 
+    <!--Recycler STRINGS-->
+    <string name="markCalendar">Date taken</string>
+
+
     <!--Contact STRINGS-->
     <string name="emailMe">Feedback!\n\nPress the icon to send an email!</string>
 
