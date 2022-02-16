@@ -8,34 +8,43 @@ package coltonlachance.com.madskeletonapplication;
  *
  * @author Colton LaChance
  */
-public class RecyclerPojo {
-    private String picName;
-    private int picID;
+public class ClubPictures {
 
+    private int id;
+    private String name;
+    private String picURI;
     private long dateTakenInMillis; //Will convert in future to method that calculates using Java Calendar class
 
-    public RecyclerPojo(String picName, int picID, long dateTakenInMillis) {
-        this.picName = picName;
-        this.picID = picID;
+    public ClubPictures(int id, String name, String picURI, long dateTakenInMillis) {
+        this.id = id;
+        this.name = name;
+        this.picURI = picURI;
         this.dateTakenInMillis = dateTakenInMillis;
     }
 
-    public String getPicName() {
-        return picName;
+    public int getId() {
+        return id;
     }
 
-    public void setPicName(String picName) {
-        this.picName = picName;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public int getPicID() {
-        return picID;
+    public String getName() {
+        return name;
     }
 
-    public void setPicID(int picID) {
-        this.picID = picID;
+    public void setName(String picName) {
+        this.name = picName;
     }
 
+    public String getPicURI() {
+        return picURI;
+    }
+
+    public void setPicURI(String picURI) {
+        this.picURI = picURI;
+    }
 
     public long getDateTakenInMillis() {
         return dateTakenInMillis;

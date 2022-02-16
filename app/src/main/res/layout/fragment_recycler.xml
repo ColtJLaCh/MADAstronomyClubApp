@@ -16,8 +16,6 @@ which uses the recycler_row.xml to define the layout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/primary"
-        android:layoutAnimation="@anim/recycler_layout_ani">
-
-    </androidx.recyclerview.widget.RecyclerView>
+        android:layoutAnimation="@anim/recycler_layout_ani"/>
 
 </RelativeLayout>

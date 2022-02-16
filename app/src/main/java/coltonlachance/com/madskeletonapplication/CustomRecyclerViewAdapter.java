@@ -2,7 +2,6 @@ package coltonlachance.com.madskeletonapplication;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.provider.CalendarContract;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,11 +25,11 @@ import java.util.ArrayList;
 public class CustomRecyclerViewAdapter extends RecyclerView.Adapter {
 
     //Create the array list that holds the Pojos
-    private ArrayList<RecyclerPojo> recyclerPojos;
+    private ArrayList<ClubPictures> recyclerPojos;
     private Context context;
 
     //Set pojos through public constructor
-    public CustomRecyclerViewAdapter(ArrayList<RecyclerPojo> recyclerPojos, Context context) {
+    public CustomRecyclerViewAdapter(ArrayList<ClubPictures> recyclerPojos, Context context) {
         this.recyclerPojos = recyclerPojos;
         this.context = context;
     }
@@ -51,12 +50,12 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter {
     //Load recycler view cell in current position
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
-        final RecyclerPojo recyclerPojo = recyclerPojos.get(position);
+        final ClubPictures recyclerPojo = recyclerPojos.get(position);
 
         //Reinitialize CustomViewHolder, casting default holder as inherited class
         final CustomViewHolder holder1 = (CustomViewHolder) holder;
-        holder1.picTV.setText((recyclerPojo.getPicName()));
-        holder1.picIV.setImageResource((recyclerPojo.getPicID()));
+        holder1.picTV.setText((recyclerPojo.getName()));
+        //holder1.picIV.setImageResource((recyclerPojo.getPicID()));
 
         //Begin calendar intent on clickable image view
         holder1.calendarIcon.setOnClickListener(new View.OnClickListener() {
@@ -64,7 +63,7 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter {
             public void onClick(View view) {
                 Intent i = new Intent(Intent.ACTION_INSERT)
                 .setData(CalendarContract.Events.CONTENT_URI)
-                .putExtra(CalendarContract.Events.TITLE, recyclerPojo.getPicName() + " - Club Pic was taken")
+                .putExtra(CalendarContract.Events.TITLE, recyclerPojo.getName() + " - Club Pic was taken")
                 .putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true)
                 .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,recyclerPojo.getDateTakenInMillis())
                 .putExtra(CalendarContract.EXTRA_EVENT_END_TIME,recyclerPojo.getDateTakenInMillis()+1); //Fix glitch where end time was before start time
