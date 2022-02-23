@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+        binding.appBarMain.fab.setImageResource(R.drawable.ic_baseline_add_photo_alternate_24);
 
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
