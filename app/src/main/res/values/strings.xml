@@ -19,6 +19,9 @@
     <!--Recycler STRINGS-->
     <string name="markCalendar">Mark on calendar</string>
 
+    <!--Manager STRINGS-->
+    <string name="addImage">Add Image</string>
+    <string name="updateImage">Update</string>
 
     <!--Contact STRINGS-->
     <string name="emailMe">Feedback!\n\nPress the icon to send an email!</string>

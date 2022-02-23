@@ -68,6 +68,7 @@ public class RecyclerFragment extends Fragment {
             // Inflate the layout for this fragment
             View view = inflater.inflate(R.layout.fragment_recycler, container, false);
 
+
             //Pull arrayList from the database
             AstronomyDatabase db = new AstronomyDatabase(getContext());
             ArrayList<ClubPictures> recyclerPojos = db.getAllClubPictures();

@@ -2,7 +2,11 @@ package coltonlachance.com.madskeletonapplication;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.media.Image;
+import android.net.Uri;
 import android.provider.CalendarContract;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -55,7 +61,7 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter {
         //Reinitialize CustomViewHolder, casting default holder as inherited class
         final CustomViewHolder holder1 = (CustomViewHolder) holder;
         holder1.picTV.setText((recyclerPojo.getName()));
-        //holder1.picIV.setImageResource((recyclerPojo.getPicID()));
+        Picasso.get().load("https://clachance.scweb.ca/pictures/darlingmeteor.jpg").into(holder1.picIV);
 
         //Begin calendar intent on clickable image view
         holder1.calendarIcon.setOnClickListener(new View.OnClickListener() {

@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+
         binding.appBarMain.fab.setImageResource(R.drawable.ic_baseline_add_photo_alternate_24);
 
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
@@ -58,13 +59,10 @@ public class MainActivity extends AppCompatActivity {
                 NavDestination currentFragment = navController.getCurrentDestination();
                 if (currentFragment.getId() == R.id.nav_recycler) {
                     Bundle extra = new Bundle();
-                    /*
-                    extra.putInt(CreateUpdateFragment.ACTION_TYPE,
-                            CreateUpdateFragment.CREATE);
+                    extra.putInt(ClubPicturesManagerFragment.ACTION_TYPE,
+                            ClubPicturesManagerFragment.CREATE);
                     navController
-                            .navigate(R.id.createUpdateFragment, extra);
-                    */
-
+                            .navigate(R.id.nav_manager, extra);
                 }
             }
         });
@@ -76,10 +74,22 @@ public class MainActivity extends AppCompatActivity {
             public void onDestinationChanged(@NonNull NavController controller,
                                              @NonNull NavDestination destination,
                                              @Nullable Bundle arguments) {
-                if (destination.getId() == R.id.nav_recycler) {
-                    binding.appBarMain.fab.show();
-                } else {
-                    binding.appBarMain.fab.hide();
+                switch (destination.getId()) {
+                    case R.id.nav_recycler:
+                        binding.appBarMain.fab.set (getResources().getColor(R.color.primary_dk));
+                        binding.appBarMain.fab.setImageResource(R.drawable.ic_baseline_add_photo_alternate_24);
+                        binding.appBarMain.fab.show();
+                    break;
+
+                    case R.id.nav_manager:
+                        binding.appBarMain.fab.setBackgroundColor(getResources().getColor(R.color.red));
+                        binding.appBarMain.fab.setImageResource(R.drawable.ic_baseline_add_photo_alternate_24);
+                        binding.appBarMain.fab.show();
+                    break;
+
+                    default:
+                        binding.appBarMain.fab.hide();
+                    break;
                 }
             }
         });
