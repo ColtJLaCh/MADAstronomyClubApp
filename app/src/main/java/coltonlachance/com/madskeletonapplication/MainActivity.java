@@ -1,5 +1,6 @@
 package coltonlachance.com.madskeletonapplication;
 
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
@@ -9,6 +10,9 @@ import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.content.res.AppCompatResources;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
@@ -33,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        int state = ClubPicturesManagerFragment.CREATE;
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -63,6 +68,13 @@ public class MainActivity extends AppCompatActivity {
                             ClubPicturesManagerFragment.CREATE);
                     navController
                             .navigate(R.id.nav_manager, extra);
+                    binding.appBarMain.fab.hide();
+                }
+
+                if (currentFragment.getId() == R.id.nav_manager) {
+                    AstronomyDatabase db = new AstronomyDatabase(view.getContext());
+                    //Will somehow delete from here
+                    db.close();
                 }
             }
         });
@@ -76,15 +88,14 @@ public class MainActivity extends AppCompatActivity {
                                              @Nullable Bundle arguments) {
                 switch (destination.getId()) {
                     case R.id.nav_recycler:
-                        binding.appBarMain.fab.set (getResources().getColor(R.color.primary_dk));
+                        binding.appBarMain.fab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.primary_lt)));
                         binding.appBarMain.fab.setImageResource(R.drawable.ic_baseline_add_photo_alternate_24);
                         binding.appBarMain.fab.show();
                     break;
 
                     case R.id.nav_manager:
-                        binding.appBarMain.fab.setBackgroundColor(getResources().getColor(R.color.red));
-                        binding.appBarMain.fab.setImageResource(R.drawable.ic_baseline_add_photo_alternate_24);
-                        binding.appBarMain.fab.show();
+                        binding.appBarMain.fab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.red)));
+                        binding.appBarMain.fab.setImageResource(R.drawable.ic_baseline_delete_forever_24);
                     break;
 
                     default:

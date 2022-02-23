@@ -63,6 +63,23 @@ public class AstronomyDatabase extends SQLiteOpenHelper {
         db.close();
     }
 
+    public int updateClubPicture(ClubPictures picture){
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_NAME, picture.getName());
+        values.put(COLUMN_URI, picture.getPicURI());
+        values.put(COLUMN_DATE, picture.getDateTakenInMillis());
+        return db.update(TABLE_CLUB_PICTURES, values, COLUMN_ID + "=?",
+                new String[]{String.valueOf(picture.getId())});
+    }
+
+    public void deleteClubPicture(int picture){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_CLUB_PICTURES, COLUMN_ID +  "=?",
+                new String[]{String.valueOf(picture)});
+        db.close();
+    }
+
     public ClubPictures getClubPicture(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
         ClubPictures clubPictures = null;

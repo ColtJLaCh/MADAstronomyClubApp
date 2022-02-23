@@ -1,18 +1,22 @@
 package coltonlachance.com.madskeletonapplication;
 
+import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.media.Image;
-import android.net.Uri;
+
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.provider.CalendarContract;
-import android.provider.MediaStore;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.navigation.NavController;
+
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -68,13 +72,28 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Intent.ACTION_INSERT)
-                .setData(CalendarContract.Events.CONTENT_URI)
-                .putExtra(CalendarContract.Events.TITLE, recyclerPojo.getName() + " - Club Pic was taken")
-                .putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true)
-                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,recyclerPojo.getDateTakenInMillis())
-                .putExtra(CalendarContract.EXTRA_EVENT_END_TIME,recyclerPojo.getDateTakenInMillis()+1); //Fix glitch where end time was before start time
+                        .setData(CalendarContract.Events.CONTENT_URI)
+                        .putExtra(CalendarContract.Events.TITLE, recyclerPojo.getName() + " - Club Pic was taken")
+                        .putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true)
+                        .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, recyclerPojo.getDateTakenInMillis())
+                        .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, recyclerPojo.getDateTakenInMillis() + 1); //Fix glitch where end time was before start time
 
                 context.startActivity(i);
+            }
+        });
+
+        holder1.editImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle extra = new Bundle();
+
+                extra.putInt(ClubPicturesManagerFragment.ACTION_TYPE,
+                        ClubPicturesManagerFragment.UPDATE);
+
+                extra.putParcelable(ClubPicturesManagerFragment.PICTURE,
+                        (Parcelable) recyclerPojos.get(holder.getAdapterPosition()));
+
+                Navigation.findNavController(view).navigate(R.id.nav_manager, extra);
             }
         });
     }
@@ -91,12 +110,14 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter {
         protected TextView picTV;
         protected ImageView picIV;
         protected ImageView calendarIcon;
+        protected ImageView editImage;
 
         public CustomViewHolder(View view) {
             super(view);
             this.picTV = view.findViewById(R.id.pictureTV);
             this.picIV = view.findViewById(R.id.pictureIV);
             this.calendarIcon = view.findViewById(R.id.calendarIcon);
+            this.editImage = view.findViewById(R.id.editImage);
         }
     }
 }

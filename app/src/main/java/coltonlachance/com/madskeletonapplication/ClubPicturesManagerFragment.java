@@ -21,29 +21,40 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import coltonlachance.com.madskeletonapplication.databinding.ActivityMainBinding;
+
 public class ClubPicturesManagerFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
+    ClubPictures picture;
+
     public static final int CREATE = 1;
     public static final int UPDATE = 2;
 
     public static final String ACTION_TYPE = "action_type";
+    public static final String PICTURE = "picture";
+
+    ArrayList<ClubPictures> clubPictures;
+    int currentPictureID = 0;
 
 
     public ClubPicturesManagerFragment() {
         // Required empty public constructor
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,6 +67,10 @@ public class ClubPicturesManagerFragment extends Fragment {
         Button addImage= view.findViewById(R.id.addImageButton);
         TextView errorText = view.findViewById(R.id.errorTV);
         ImageView testImg = view.findViewById(R.id.pictureTestIV);
+
+        AstronomyDatabase db = new AstronomyDatabase(getContext());
+        clubPictures = db.getAllClubPictures();
+        db.close();
 
         uriEdit.addTextChangedListener(new TextWatcher() {
             @Override
@@ -78,8 +93,16 @@ public class ClubPicturesManagerFragment extends Fragment {
 
             if(getArguments().getInt(ACTION_TYPE) == CREATE) {
                 addImage.setText(R.string.addImage);
+                currentPictureID = clubPictures.size();
             }
             else{
+                picture = getArguments().getParcelable(PICTURE);
+                currentPictureID = picture.getId();
+
+                titleEdit.setText(picture.getName());
+                uriEdit.setText(picture.getPicURI());
+                //dateEdit.setText(picture); I'll going to change the date field from a long to a string sometime this week
+
                 addImage.setText(R.string.updateImage);
             }
 
@@ -96,7 +119,7 @@ public class ClubPicturesManagerFragment extends Fragment {
                         Date date = dateFormat.parse(String.valueOf(dateEdit.getText()));
                         dateInMillis = date.getTime();
                         dateValid = true;
-                    }catch (Exception e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
                         errorText.setAlpha(1);
                     }
@@ -104,25 +127,30 @@ public class ClubPicturesManagerFragment extends Fragment {
                     if (dateValid) {
                         if (getArguments().getInt(ACTION_TYPE) == CREATE) {
 
-                            ClubPictures clubPicture = new ClubPictures(0, String.valueOf(titleEdit.getText()), String.valueOf(uriEdit.getText()), dateInMillis);
+                            ClubPictures clubPicture = new ClubPictures(currentPictureID, String.valueOf(titleEdit.getText()), String.valueOf(uriEdit.getText()), dateInMillis);
 
                             db.addClubPicture(clubPicture);
 
                             Navigation.findNavController(view).popBackStack();
 
                         } else {
-                            /*
-                            ClubPictures clubPicture = new ClubPictures(0, String.valueOf(titleEdit.getText()), String.valueOf(uriEdit.getText()), dateInMillis);
 
-                            db.addClubPicture(clubPicture);
-                             */
+                            ClubPictures clubPicture = new ClubPictures(currentPictureID, String.valueOf(titleEdit.getText()), String.valueOf(uriEdit.getText()), dateInMillis);
+
+                            db.updateClubPicture(clubPicture);
+
+                            Navigation.findNavController(view).popBackStack();
                         }
                     }
-
+                    db.close();
                 }
             });
 
         }
         return view;
+    }
+
+    public int getCurrentPictureID() {
+        return currentPictureID;
     }
 }
