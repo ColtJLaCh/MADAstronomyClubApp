@@ -1,5 +1,8 @@
 package coltonlachance.com.madskeletonapplication;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**Listings
  * A pojo for a recycler view adapter
  *
@@ -8,7 +11,7 @@ package coltonlachance.com.madskeletonapplication;
  *
  * @author Colton LaChance
  */
-public class ClubPictures {
+public class ClubPictures implements Parcelable {
 
     private int id;
     private String name;
@@ -52,5 +55,38 @@ public class ClubPictures {
 
     public void setDateTakenInMillis(long dateTakenInMillis) {
         this.dateTakenInMillis = dateTakenInMillis;
+    }
+
+    //Parceable stuff
+    protected ClubPictures(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+        picURI = in.readString();
+        dateTakenInMillis = in.readLong();
+    }
+
+    public static final Creator<ClubPictures> CREATOR = new Creator<ClubPictures>() {
+        @Override
+        public ClubPictures createFromParcel(Parcel in) {
+            return new ClubPictures(in);
+        }
+
+        @Override
+        public ClubPictures[] newArray(int size) {
+            return new ClubPictures[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(id);
+        parcel.writeString(name);
+        parcel.writeString(picURI);
+        parcel.writeLong(dateTakenInMillis);
     }
 }

@@ -49,8 +49,10 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_row,null,false);
+
         RecyclerView.LayoutParams layoutParams = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         view.setLayoutParams(layoutParams);
+
         CustomViewHolder viewHolder = new CustomViewHolder(view);
 
         return viewHolder;
@@ -91,7 +93,7 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter {
                         ClubPicturesManagerFragment.UPDATE);
 
                 extra.putParcelable(ClubPicturesManagerFragment.PICTURE,
-                        (Parcelable) recyclerPojos.get(holder.getAdapterPosition()));
+                        recyclerPojos.get(holder.getAdapterPosition()));
 
                 Navigation.findNavController(view).navigate(R.id.nav_manager, extra);
             }
