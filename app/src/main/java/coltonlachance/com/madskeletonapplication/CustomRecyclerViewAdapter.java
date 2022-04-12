@@ -1,12 +1,25 @@
 package coltonlachance.com.madskeletonapplication;
 
+import android.app.Fragment;
+import android.content.Context;
+import android.content.Intent;
+
+import android.os.Bundle;
+import android.os.Parcelable;
+import android.provider.CalendarContract;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.navigation.NavController;
+
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -22,11 +35,13 @@ import java.util.ArrayList;
 public class CustomRecyclerViewAdapter extends RecyclerView.Adapter {
 
     //Create the array list that holds the Pojos
-    private ArrayList<RecyclerPojo> recyclerPojos;
+    private ArrayList<ClubPictures> recyclerPojos;
+    private Context context;
 
     //Set pojos through public constructor
-    public CustomRecyclerViewAdapter(ArrayList<RecyclerPojo> recyclerPojos) {
+    public CustomRecyclerViewAdapter(ArrayList<ClubPictures> recyclerPojos, Context context) {
         this.recyclerPojos = recyclerPojos;
+        this.context = context;
     }
 
     //Set ViewHolder layout parameters, and return as view
@@ -34,8 +49,10 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_row,null,false);
+
         RecyclerView.LayoutParams layoutParams = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         view.setLayoutParams(layoutParams);
+
         CustomViewHolder viewHolder = new CustomViewHolder(view);
 
         return viewHolder;
@@ -45,13 +62,42 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter {
     //Load recycler view cell in current position
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
-        final RecyclerPojo recyclerPojo = recyclerPojos.get(position);
+        final ClubPictures recyclerPojo = recyclerPojos.get(position);
 
         //Reinitialize CustomViewHolder, casting default holder as inherited class
         final CustomViewHolder holder1 = (CustomViewHolder) holder;
-        holder1.picTV.setText((recyclerPojo.getPicName()));
-        holder1.picIV.setImageResource((recyclerPojo.getPicID()));
+        holder1.picTV.setText((recyclerPojo.getName()));
+        Picasso.get().load("https://clachance.scweb.ca/pictures/darlingmeteor.jpg").into(holder1.picIV);
 
+        //Begin calendar intent on clickable image view
+        holder1.calendarIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_INSERT)
+                        .setData(CalendarContract.Events.CONTENT_URI)
+                        .putExtra(CalendarContract.Events.TITLE, recyclerPojo.getName() + " - Club Pic was taken")
+                        .putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true)
+                        .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, recyclerPojo.getDateTakenInMillis())
+                        .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, recyclerPojo.getDateTakenInMillis() + 1); //Fix glitch where end time was before start time
+
+                context.startActivity(i);
+            }
+        });
+
+        holder1.editImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle extra = new Bundle();
+
+                extra.putInt(ClubPicturesManagerFragment.ACTION_TYPE,
+                        ClubPicturesManagerFragment.UPDATE);
+
+                extra.putParcelable(ClubPicturesManagerFragment.PICTURE,
+                        recyclerPojos.get(holder.getAdapterPosition()));
+
+                Navigation.findNavController(view).navigate(R.id.nav_manager, extra);
+            }
+        });
     }
 
     //Return ViewHolder size and println for debugging purposes
@@ -65,11 +111,15 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter {
     class CustomViewHolder extends RecyclerView.ViewHolder {
         protected TextView picTV;
         protected ImageView picIV;
+        protected ImageView calendarIcon;
+        protected ImageView editImage;
 
         public CustomViewHolder(View view) {
             super(view);
             this.picTV = view.findViewById(R.id.pictureTV);
             this.picIV = view.findViewById(R.id.pictureIV);
+            this.calendarIcon = view.findViewById(R.id.calendarIcon);
+            this.editImage = view.findViewById(R.id.editImage);
         }
     }
 }

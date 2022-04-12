@@ -8,6 +8,7 @@
 
     <color name="white">#FFFFFFFF</color>
     <color name="black">#FF000000</color>
+    <color name="red">#8A0000</color>
 
     <!--
         Material color scheme

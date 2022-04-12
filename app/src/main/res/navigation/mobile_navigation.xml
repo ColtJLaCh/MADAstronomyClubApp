@@ -24,4 +24,9 @@
         android:name="coltonlachance.com.madskeletonapplication.VPHolderFragment"
         android:label="Planets Info"
         tools:layout="@layout/fragment_v_p_holder" />
+    <fragment
+        android:id="@+id/nav_manager"
+        android:name="coltonlachance.com.madskeletonapplication.ClubPicturesManagerFragment"
+        android:label="Club Pictures"
+        tools:layout="@layout/fragment_club_pictures_manager" />
 </navigation>
