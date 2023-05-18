@@ -1,9 +1,8 @@
 package coltonlachance.com.madskeletonapplication;
 
-import android.app.SearchManager;
-import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import java.util.ArrayList;
 
@@ -70,26 +68,33 @@ public class RecyclerFragment extends Fragment {
             // Inflate the layout for this fragment
             View view = inflater.inflate(R.layout.fragment_recycler, container, false);
 
-            //Create ArrayList to be used within the instantiation of the CustomRecyclerViewAdapter
-            ArrayList<RecyclerPojo> recyclerPojos = new ArrayList<RecyclerPojo>();
+
+            //Pull arrayList from the database
+            AstronomyDatabase db = new AstronomyDatabase(getContext());
+            ArrayList<ClubPictures> recyclerPojos = db.getAllClubPictures();
+            db.close();
 
             //Create recycler cells/rows
-            recyclerPojos.add(new RecyclerPojo("Full Moon", R.drawable.fullmoon));
-            recyclerPojos.add(new RecyclerPojo("Midday Meteor", R.drawable.darlingmeteor));
-            recyclerPojos.add(new RecyclerPojo("Comet Debris", R.drawable.shootingstar));
-            recyclerPojos.add(new RecyclerPojo("Milky Way", R.drawable.stars));
-            recyclerPojos.add(new RecyclerPojo("Moon - Day", R.drawable.moonsky));
+        /*
+            recyclerPojos.add(new ClubPictures("Full Moon", R.drawable.fullmoon,1640062800000L));
+            recyclerPojos.add(new ClubPictures("Midday Meteor", R.drawable.darlingmeteor,1631764800000L));
+            recyclerPojos.add(new ClubPictures("Comet Debris", R.drawable.shootingstar,1625284800000L));
+            recyclerPojos.add(new ClubPictures("Milky Way", R.drawable.stars,1614574800000L));
+            recyclerPojos.add(new ClubPictures("Moon - Day", R.drawable.moonsky,1610254800000L));
+         */
 
             //Get the view
             RecyclerView recyclerView = view.findViewById(R.id.recycler);
 
             //Modify recycler view with ItemDecorations or functionality
+
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
             DividerItemDecoration divider = new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL);
+            divider.setDrawable(ContextCompat.getDrawable(recyclerView.getContext(), R.drawable.rectdiv));
             recyclerView.addItemDecoration(divider);
 
             //Instantiate adapter and set
-            CustomRecyclerViewAdapter adapter = new CustomRecyclerViewAdapter(recyclerPojos);
+            CustomRecyclerViewAdapter adapter = new CustomRecyclerViewAdapter(recyclerPojos,getContext());
             recyclerView.setAdapter(adapter);
 
             return view;
